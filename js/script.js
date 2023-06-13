@@ -1,11 +1,6 @@
 /**
- * Slider Show 1.0.0
  * Slider design using JavaScript, CSS and HTML
- * 
- *
  * Copyright amir javanmir
- *
- *
  * Released on: June 13, 2023
  */
 class slider {
