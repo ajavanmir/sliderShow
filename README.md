@@ -84,6 +84,7 @@ Add a preview link or a GIF here to show how the slider works (optional).
 
 You can modify the slider's appearance by editing the `style.css` file.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+### **License**
+This project is licensed under the MIT License.  
+**Copyright Amir Javanmir**  
+Released on: June 13, 2023
