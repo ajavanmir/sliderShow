@@ -36,68 +36,169 @@ This script provides a reusable, class-based slider component with features such
 2. **HTML Structure**  
    The slider expects the following basic structure:
    ```html
-   <div id="sliders">
-       <div class="slider active">Slide 1</div>
-       <div class="slider">Slide 2</div>
-       <div class="slider">Slide 3</div>
-   </div>
+   <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slider show</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v20.1.0/dist/font-face.css" type="text/css" media="all">
+    <link rel="stylesheet" href="./css/reset.css" type="text/css" media="all">
+    <link rel="stylesheet" href="./css/style.css" type="text/css" media="all">
+</head>
+
+<body>
+    <header>
+        <h1>Slider design using JavaScript, CSS and HTML</h1>
+    </header>
+
+    <div class="sliders" id="sliders">
+        <div class="slider active">
+            <div class="numbertext">1/3</div>
+            <img src="./img/photo1.webp" width="100%">
+            <p class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit1.</p>
+        </div>
+        <div class="slider">
+            <div class="numbertext">2/3</div>
+            <img src="./img/photo2.webp" width="100%">
+            <p class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit2.</p>
+        </div>
+        <div class="slider">
+            <div class="numbertext">3/3</div>
+            <img src="./img/photo3.webp" width="100%">
+            <p class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit3.</p>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
    ```
 
 3. **Styling Requirements**  
    Add CSS to style the slider:
    ```css
-   #sliders {
-       position: relative;
-       overflow: hidden;
-   }
+   *,
+*::after,
+*::before {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
 
-   .slider {
-       display: none;
-   }
+*::after,
+*::before {
+    content: '';
+}
 
-   .slider.active {
-       display: block;
-   }
+body {
+    font-size: 16px;
+    font-family: "vazir";
+    color: white;
+    background-color: #29324e;
+    direction: rtl
+}
 
-   .dots {
-       display: flex;
-       justify-content: center;
-       margin-top: 10px;
-   }
+header {
+    position: relative;
+    line-height: 180px;
+    height: 160px;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
-   .dot {
-       height: 10px;
-       width: 10px;
-       margin: 0 5px;
-       background-color: gray;
-       border-radius: 50%;
-       cursor: pointer;
-       transition: background-color 0.3s;
-   }
+header h1 {
+    font-size: 1.3rem;
+}
 
-   .dot.active {
-       background-color: black;
-   }
+.sliders {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
 
-   .next, .prev {
-       cursor: pointer;
-       position: absolute;
-       top: 50%;
-       width: auto;
-       margin-top: -22px;
-       color: black;
-       font-weight: bold;
-       font-size: 18px;
-       user-select: none;
-   }
+.slider {
+    display: none;
+}
 
-   .next {
-       right: 0;
-   }
+.text {
+    color: white;
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    padding: 8px 12px;
+    font-size: 1.5rem;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
-   .prev {
-       left: 0;
-   }
+.numbertext {
+    background-color: rgba(0, 0, 0, 0.5);
+    direction: ltr;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.1rem;
+    text-align: center;
+    color: white;
+    padding: 5px 8px;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 12px;
+    font-size: 1.5rem;
+    border-radius: 3px 0 0 3px;
+    transition: 0.6s ease;
+    font-weight: bold;
+    color: white;
+    width: auto;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.next {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.dots {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dots .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot:hover {
+    background-color: #717171;
+}
+
+.dot.active {
+    background-color: #fff;
+}
+
+.slider.active {
+    display: block;
+}
    ```
 
 ---
@@ -126,28 +227,6 @@ This script provides a reusable, class-based slider component with features such
 - `el`: Pass the slider container element.  
 - `slideClass`: Define the class for individual slides.  
 - `auto`: Set the interval for auto-play in milliseconds. Pass `false` to disable auto-play.
-
----
-
-### **Usage Example**
-
-Include the HTML, CSS, and JavaScript:
-```html
-<div id="sliders">
-    <div class="slider active">Slide 1</div>
-    <div class="slider">Slide 2</div>
-    <div class="slider">Slide 3</div>
-</div>
-
-<script src="slider.js"></script>
-<script>
-    new slider({
-        el: document.querySelector("#sliders"),
-        slideClass: "slider",
-        auto: 5000,
-    });
-</script>
-```
 
 ---
 
